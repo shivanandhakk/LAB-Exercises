@@ -1,0 +1,24 @@
+def triangle(a,b):
+    peri=2*(a+b)
+    print("The Semi Perimeter of Rectangle:",peri)
+    area=a*b
+    print("The Area of Rectangle is:",area)
+
+def rectangle(a,b):
+    peri = 2 * (a+b)
+    print (" The Semi perimeter of Rectangle :", peri)
+    area = a * b
+    print ( " The Area of Rectangle is :", area)    
+          
+def square(a):
+    peri=4*a
+    print("The Semi Perimeter of Square:",peri)
+    area=a*a
+    print("The Area of Square is:",area)
+
+from module1 import triangle
+from module2 import rectangle
+from module3 import square
+triangle(5,6,7)
+rectangle(5,10)
+square(5)

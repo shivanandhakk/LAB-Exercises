@@ -1,0 +1,78 @@
+import sqlite3
+db=sqlite3.connect('test.db')
+print("Database Operations:\n 1. Create database\n 2. Insert\n 3. Update \n 4. Delete\n 5. Select\n 6. Exit\n")
+def create():
+    cur=db.cursor()
+    cur.execute('''CREATE TABLE student(
+    regno INTEGER PRIMARY KEY,
+    name TEXT(40) NOT NULL,
+    age INTEGER,
+    percentage REAL);''')
+    print('Table created succesfully!')
+
+def insert():
+    db=sqlite3.connect('test.db')
+    regno=int(input("Enter Register Number:"))
+    name=input("Enter Student Name:")
+    age=int(input("Enter Age:"))
+    percentage=float(input("Enter Percentage:"))
+    qry="insert into student values(%d,'%s',%d,'%f')"
+    cur=db.cursor()
+    cur.execute(qry%(regno,name,age,percentage))
+    print("Record Inserted Successfully!")
+    db.commit()
+
+def update():
+    db=sqlite3.connect('test.db')
+    regno=int(input("Enter Register Number to be updated:"))
+    name=input("Enter Student Name:")
+    age=int(input("Enter Age:"))
+    percentage=float(input("Enter Percentage:"))
+    qry="update student set name='%s',age=%d,percentage='%f' where regno=%d"
+    cur=db.cursor()
+    cur.execute(qry%(name,age,percentage,regno))
+    print("Record Updated Successfully!")
+    db.commit()
+             
+def delete():
+    db=sqlite3.connect('test.db')
+    regno=int(input("Enter Register Number to be deleted:"))
+    qry="DELETE from student where regno=%d;"
+    cur=db.cursor()
+    cur.execute(qry%(regno))
+    print("Record Deleted Successfully!")
+    db.commit()
+
+def select():
+    db=sqlite3.connect('test.db')
+    sql="SELECT * from student;"
+    cur=db.cursor()
+    cur.execute(sql)
+    while True:
+        record=cur.fetchone()
+        if record==None:
+            break
+        print(record)
+        db.close()
+
+while(1):
+    n=int(input("Enter your choice:"))
+    if n==1:
+        create()
+    elif n==2:
+        insert()
+    elif n==3:
+        update()
+    elif n==4:
+        delete()
+    elif n==5:
+        select()
+    elif n==6:
+        print("Exited")
+        break
+    else:
+        print("Wrong choice!")
+    
+            
+    
+        

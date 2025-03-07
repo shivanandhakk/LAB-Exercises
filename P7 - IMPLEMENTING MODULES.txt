@@ -1,8 +1,8 @@
-def triangle(a,b):
-    peri=2*(a+b)
-    print("The Semi Perimeter of Rectangle:",peri)
-    area=a*b
-    print("The Area of Rectangle is:",area)
+def triangle(a,b,c):
+    peri=(a+b+c)/2
+    print("The Semi Perimeter of Triangle:",peri)
+    area=(peri*(peri-a)*(peri-b)*(peri-c)**0.5)
+    print("The Area of Triangle is:",area)
 
 def rectangle(a,b):
     peri = 2 * (a+b)
